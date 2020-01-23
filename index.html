@@ -34,11 +34,11 @@
   }
 
   function getBiggest(number) {
-    return String(number).split('').sort().reverse().join('');
+    return String(pad(number)).split('').sort().reverse().join('');
   }
 
   function getSmallest(number) {
-    return pad(String(number).split('').sort().join(''));
+    return String(pad(number)).split('').sort().join('');
   }
 
   function getInput() {
