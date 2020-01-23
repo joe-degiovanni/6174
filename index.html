@@ -36,7 +36,7 @@
 
 <p>Enter a number between 1 and 9998</p>
 
-<input id="number" type="number" min="1" max="9999" maxlength="4" size="4"/><br/>
+<input id="number" type="number" min="1" max="9999" maxlength="4" size="4" placeholder="6174"/><br/>
 <input type="button" value="GO" onclick="go()"/><br/>
 
 <textarea id="output" disabled="true" rows="30"></textarea>
@@ -45,20 +45,20 @@
   function go() {
     clearOutput();
     var number = getInput();
-    appendOutput('you entered ' + number);
+    write('you entered ' + number);
     var iteration = 0;
     while (number != 6174 && number != 0) {
-      appendOutput('iteration #' + (++iteration) + '...');
+      write('\niteration #' + (++iteration) + '...');
       outputBiggestMinusSmallest(number);
       number = getBiggest(number) - getSmallest(number);
     }
   }
 
   function outputBiggestMinusSmallest(number) {
-    appendOutput('  ' + getBiggest(number) + ' (biggest)');
-    appendOutput('- ' + getSmallest(number) + ' (smallest)');
-    appendOutput('-------------------');
-    appendOutput('  ' + getBiggest(number) - getSmallest(number));
+    write('  ' + getBiggest(number) + ' (biggest)');
+    write('- ' + getSmallest(number) + ' (smallest)');
+    write('-------------------');
+    write('  ' + (getBiggest(number) - getSmallest(number)));
   }
 
   function getBiggest(number) {
@@ -81,7 +81,7 @@
     document.getElementById('output').innerText = '';
   }
 
-  function appendOutput(text) {
+  function write(text) {
     document.getElementById('output').appendChild(document.createTextNode(text + '\n'));
   }
 </script>
