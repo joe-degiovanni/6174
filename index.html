@@ -38,11 +38,15 @@
   }
 
   function getSmallest(number) {
-    return String(number).split('').sort().join('');
+    return pad(String(number).split('').sort().join(''));
   }
 
   function getInput() {
-    return String("0000" + document.getElementById('number').value).slice(-4);
+    return pad(document.getElementById('number').value);
+  }
+
+  function pad(number) {
+    return String("0000" + number).slice(-4);
   }
 
   function clearOutput() {
