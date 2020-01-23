@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>6174</title>
+</head>
+<body>
+<h1>Biggest Minus Smallest</h1>
+<p>enter a number between 1 and 9999</p>
+
+<input id="number" type="number" min="1" max="9999" maxlength="4" size="4"/>
+<input type="button" value="GO" onclick="go()"/>
+<input type="button" value="clear" onclick="clearOutput()"/>
+<br/>
+
+<textarea id="output" disabled="true" rows="30"></textarea>
+
+<script>
+  function go() {
+    clearOutput();
+    var number = getInput();
+    appendOutput('entered '+ number);
+    while (number != 6174 && number != 0) {
+      outputBiggestMinusSmallest(number);
+      number = getBiggest(number) - getSmallest(number);
+    }
+  }
+
+  function outputBiggestMinusSmallest(number) {
+    appendOutput(getBiggest(number) + ' (biggest)');
+    appendOutput('- '+ getSmallest(number) + ' (smallest)');
+    appendOutput('-------------------');
+    appendOutput(getBiggest(number) - getSmallest(number));
+  }
+
+  function getBiggest(number) {
+    return String(number).split('').sort().reverse().join('');
+  }
+
+  function getSmallest(number) {
+    return String(number).split('').sort().join('');
+  }
+
+  function getInput() {
+    return String("0000" + document.getElementById('number').value).slice(-4);
+  }
+
+  function clearOutput() {
+    document.getElementById('output').innerText = '';
+  }
+
+  function appendOutput(text) {
+    document.getElementById('output').appendChild(document.createTextNode(text+'\n'));
+  }
+</script>
+</body>
+</html>
